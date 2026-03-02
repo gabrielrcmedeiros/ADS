@@ -1,0 +1,94 @@
+1- Qual o valor de y no final do programa? 
+#include <stdio.h>
+main()
+{
+int y, *p, x;
+y = 0;
+p = &y;
+x = *p;
+x = 4;
+++(*p);
+x–;
+(*p) += x++;
+printf (“y = %d\n”, y);
+
+R: Y=4
+
+2-Teste e explique a diferença, caso exista, entre
+p++: simplificando quer dizer p+1
+(*p)++: Seria o valor do ponteiro +1 
+*(++p): Ele acessa o ponteiro p, que está sendo incrementado +1
+
+b) O que quer dizer *(p+10)?
+R:Apontar p[10] e um vetor.
+
+3-Quais serão os valores de x, y e p ao final do trecho de código
+abaixo?
+int x, y, *p;y = 0;
+p = &y;
+x = *p;
+x = 4;
+(*p)++;
+–x;
+(*p) += x;
+x = 3
+y = 4
+p = y(&y)
+4-Os programas (trechos de código) abaixo possuem erros. Qual(is)?
+Como deveriam ser?
+a)
+void main() { // o correto seria int main
+int x, *p;
+x = 100;
+p = x; // falta do & no lado do x
+printf(“Valor de p: %d.\n”, *p);} 
+
+Codigo corrigido
+int main() {
+int x, *p;
+x = 100;
+p = &x;     
+printf("Valor de p: %d.\n", *p);
+
+   b)
+void troca (int *i, int *j) {
+int *temp; // *temp é um ponteiro não definido
+*temp = *i;
+*i = *j;
+*j = *temp;} // o resultado dá em um enderenço aleatorio
+
+Codigo corrigido
+void troca (int *i, int *j) {
+int temp;
+temp = *i;
+*i = *j;
+*j = temp;
+}
+
+c)
+char *a, *b;
+a = “abacate”;
+b = “uva”;
+if (a < b) // não está comparando valores, e sim enderenços
+printf (“%s vem antes de %s no dicionário”, a, b);
+else
+printf (“%s vem depois de %s no dicionário”, a, b);
+
+Codigo corrigido
+int main() {
+char *a = "abacate";
+char *b = "uva";
+if (strcmp(a, b) < 0)
+printf("%s vem antes de %s no dicionário\n", a, b);
+else
+printf("%s vem depois de %s no dicionário\n", a, b);
+
+5- Escreva uma função chamada troca que troca os valores dos
+parâmetros recebidos. Sua assinatura deve ser:void troca(float *a, float *b);
+R: void troca(float *a, float *b) {
+float temp;
+    temp = *a;  
+    *a = *b;    
+    *b = temp;  
+}
+   
