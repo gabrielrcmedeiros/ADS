@@ -1,0 +1,90 @@
+criar tabela categoriaObra(
+	código int chave primária auto_increment ,
+    nome varchar (100)
+) ;
+ 
+criar tabela (
+	código bigint chave primária auto_increment ,
+	isbn varchar (30) único ,
+	título varchar (100) não nulo ,
+	autores varchar (100) não nulo ,
+	palavrasChave varchar (100),
+	 data de publicação ,
+	numeroEdicao int ,
+	editora varchar (100),
+	numeroPágina int ,
+	Categoria int
+) ;
+ 
+ALTER TABLE ADICIONAR REFERÊNCIAS A CHAVE FOREIGN (categoria)
+categoriaObra(código) ;
+ 
+criar tabela categoryLeitor(
+	código int chave primária auto_increment ,
+    nome varchar (100) ,
+    dias int padrão (7)
+) ;
+ 
+criar tabela leitor(
+	código bigint chave primária auto_increment ,
+    documento varchar (30) não nulo ,
+	nome varchar (100) não nulo ,
+    endereco varchar (100),
+    cidade varchar (100),
+    estado char (2),
+    telefones varchar (30) não nulo ,
+    email varchar (100) único ,
+    senha varchar (100),
+    categoria int ,
+data     de Nascimento
+) ;
+ 
+alter table leader add foreign key (categoria)
+    referências categoriaLeitor(código) ;
+ 
+criar tabela cópia(
+	código bigint chave primária auto_increment ,
+	obra bigint ,
+    status varchar (50),
+    texto obs
+    ) ;
+ 
+   ALTER TABLE copia ADICIONAR KEY FOREIGN (OBRA) REFERÊNCIAS
+    obra(código) ;
+   
+criar tabela funcionario(
+	código bigint chave primária auto_increment ,
+	nome varchar (100) não nulo ,
+    endereco varchar (100),
+    cidade varchar (100),
+    estado varchar (2),
+    telefones varchar (30) não nulo ,
+    data de Nascimento ,
+    email varchar (100) não nulo único ,
+    senha varchar (100)
+) ;    
+alterar tabela funcionario adicionar coluna logradouro ;
+ 
+criar reserva de mesa (
+código bigint chave primária auto_increment ,
+dataReserva data ,
+dataPrevistaRetirada data ,
+dataPrevistaDevolucao data ,
+Leitor Bigint ,
+obra bigint
+) ;    
+alterar reserva de tabela adicionar chave estrangeira (leitor) referências leitor(codigo) ;
+alterar reserva de tabela adicionar referências de chave estrangeira (obra) obra(codigo) ;
+ 
+ 
+criar tabela emprestimo(
+código bigint chave primária auto_increment ,
+timestamp dataEmprestimo ,
+dataPrevistaDevolucao timestamp ,
+timestamp de devolução de dados ,
+multa decimal (18.2) padrão 0,
+obs varchar (400),
+Leitor Bigint ,
+cópia bigint ,
+funcionario bigint
+) ;
