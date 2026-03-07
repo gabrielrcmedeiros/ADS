@@ -1,0 +1,6 @@
+1) O que é um Tipo Abstrato de Dados (TAD)?
+R:É um conjunto de dados e as operações que podem ser realizadas sobre esses dados.
+
+2) Vantagens de programar com TADs
+R:Reutilização, segurança dos dados, modificar a implemtantação sem alterar quem usa o TAD
+
